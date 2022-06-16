@@ -1,0 +1,15 @@
+{
+  "name": "wdio heroku ci testing",
+  "buildpacks": [{ "url": "heroku/nodejs" }],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "npm run wdio"
+      },
+      "buildpacks": [
+        { "url": "heroku/google-chrome" },
+        { "url": "heroku/nodejs" }
+      ]
+    }
+  }
+}
