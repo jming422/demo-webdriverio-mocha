@@ -10,8 +10,6 @@
     "build": "rm -rf ./dist && tsc",
     "watch": "tsc -w",
     "code:format": "eslint . --ext .ts && prettier --check \"src/**/*.ts*\" --write",
-    "tests:e2e": "wdio ./wdio.conf.ts --spec ./src/test/e2e/**/*.spec.ts",
-    "tests:visualregression": "wdio ./wdio.conf.ts --spec ./src/test/visual-regression/**/*.spec.ts",
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "devDependencies": {
