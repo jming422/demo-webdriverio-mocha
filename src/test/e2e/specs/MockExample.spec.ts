@@ -1,10 +1,8 @@
 describe('Mock requests example.', () => {
-    it('Should display the right Bitcoin price.', () => {
-        const mock = browser.mock(
+    it('Should display the right Bitcoin price.', async () => {
+        const mock = await browser.mock(
             'https://cdn.mercadobitcoin.com.br/api/tickers?' + '**',
-            {
-                method: 'get',
-            },
+            { method: 'get' },
         );
 
         mock.respond(
@@ -26,9 +24,9 @@ describe('Mock requests example.', () => {
             { statusCode: 200 },
         );
 
-        browser.url('https://www.mercadobitcoin.com.br/');
+        await browser.url('https://www.mercadobitcoin.com.br/');
 
-        const bitcoinPriceElement = $(
+        const bitcoinPriceElement = await $(
             '//div[@data-ticker="btc"]//p[text()="Bitcoin"]/following-sibling::p',
         );
 

@@ -1,6 +1,6 @@
 class LoginPage {
-    open() {
-        browser.url('/');
+    async open() {
+        await browser.url('/');
     }
 
     get buttonLogin() {
@@ -27,15 +27,15 @@ class LoginPage {
         return $('.info-account');
     }
 
-    login(email: string, password: string) {
-        this.buttonLogin.click();
+    async login(email: string, password: string) {
+        await this.buttonLogin.click();
 
-        this.inputEmail.waitForEnabled();
-        this.inputEmail.setValue(email);
-        this.inputPassword.setValue(password);
+        await this.inputEmail.waitForEnabled();
+        await this.inputEmail.setValue(email);
+        await this.inputPassword.setValue(password);
 
-        this.buttonSignIn.click();
-        this.welcomeMessage.waitForExist();
+        await this.buttonSignIn.click();
+        await this.welcomeMessage.waitForExist();
     }
 }
 

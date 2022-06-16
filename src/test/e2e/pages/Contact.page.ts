@@ -27,22 +27,26 @@ class ContactPage {
         return $('body #fileUpload');
     }
 
-    goToContactPage() {
-        this.contactLink.click();
-        this.heading.waitForExist();
+    async goToContactPage() {
+        await this.contactLink.click();
+        await this.heading.waitForExist();
     }
 
-    sendMessage(content: { subject: string; message: string; file: string }) {
+    async sendMessage(content: {
+        subject: string;
+        message: string;
+        file: string;
+    }) {
         if (content.file) {
-            this.inputFile.setValue(
+            await this.inputFile.setValue(
                 `${process.cwd()}/files-to-upload/${content.file}`,
             );
         }
 
-        this.subjectContact.selectByAttribute('value', content.subject);
-        this.message.setValue(content.message);
+        await this.subjectContact.selectByAttribute('value', content.subject);
+        await this.message.setValue(content.message);
 
-        this.buttonSubmitMessage.click();
+        await this.buttonSubmitMessage.click();
     }
 }
 

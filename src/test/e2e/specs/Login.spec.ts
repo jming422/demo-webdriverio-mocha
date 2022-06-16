@@ -4,23 +4,23 @@ import LoginPage from '../pages/Login.page';
 import login from '../../data/Login.json';
 
 describe('Authentication page.', () => {
-    before(() => {
-        LoginPage.open();
+    before(async () => {
+        await LoginPage.open();
     });
 
-    it('Displays login message successfully.', () => {
+    it('Displays login message successfully.', async () => {
         performancetotal.sampleStart('LoginProcess');
 
-        LoginPage.login(login.user.login, login.user.password);
+        await LoginPage.login(login.user.login, login.user.password);
 
-        expect(LoginPage.welcomeMessage).toHaveText(
+        expect(await LoginPage.welcomeMessage).toHaveText(
             SystemMessages.FEEDBACK_USER_LOGGED,
         );
 
         performancetotal.sampleEnd('LoginProcess');
     });
 
-    it('Displays user name on the page.', () => {
-        expect(LoginPage.userLoggedIn).toHaveText(login.user.name);
+    it('Displays user name on the page.', async () => {
+        expect(await LoginPage.userLoggedIn).toHaveText(login.user.name);
     });
 });
